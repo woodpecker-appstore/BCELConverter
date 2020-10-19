@@ -5,19 +5,21 @@ import me.gv7.woodpecker.plugin.converter.ClassToBCELConverter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BCELConverter implements IPlugin {
-    public static IExtenderCallbacks callbacks;
+public class BCELConverter implements IHelperPlugin {
+    public static IHelperPluginCallbacks callbacks;
     public static IPluginHelper pluginHelper;
+
+
     @Override
-    public void PluginMain(IExtenderCallbacks callbacks) {
-        this.callbacks = callbacks;
-        this.pluginHelper = callbacks.getPluginHelper();
-        callbacks.setPluginName("Class BCEL converter");
-        callbacks.setPluginVersion("0.1.0");
-        callbacks.setPluginAutor("c0ny1");
-        List<IPayloadGenerator> payloadGeneratorList = new ArrayList<IPayloadGenerator>();
-        payloadGeneratorList.add(new ClassToBCELConverter());
-        payloadGeneratorList.add(new BCELToClassConverter());
-        callbacks.registerPayloadGenerator(payloadGeneratorList);
+    public void HelperPluginMain(IHelperPluginCallbacks iHelperPluginCallbacks) {
+        this.callbacks = iHelperPluginCallbacks;
+        this.pluginHelper = iHelperPluginCallbacks.getPluginHelper();
+        callbacks.setHelperPluginName("Class BCEL converter");
+        callbacks.setHelperPluginVersion("0.1.0");
+        callbacks.setHelperPluginAutor("c0ny1");
+        List<IHelper> helperList = new ArrayList<IHelper>();
+        helperList.add(new ClassToBCELConverter());
+        helperList.add(new BCELToClassConverter());
+        callbacks.registerHelper(helperList);
     }
 }
