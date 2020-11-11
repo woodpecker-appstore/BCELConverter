@@ -1,0 +1,5 @@
+me/gv7/woodpecker/plugin/converter/BCELToClassConverter.class
+me/gv7/woodpecker/plugin/util/BcelUtil.class
+me/gv7/woodpecker/plugin/BCELConverter.class
+me/gv7/woodpecker/plugin/converter/ClassToBCELConverter.class
+me/gv7/woodpecker/plugin/WoodpeckerPluginManager.class

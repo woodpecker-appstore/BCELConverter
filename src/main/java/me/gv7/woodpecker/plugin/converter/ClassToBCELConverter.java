@@ -17,8 +17,8 @@ public class ClassToBCELConverter implements IHelper {
     @Override
     public IArgsUsageBinder getHelperCutomArgs() {
         IArgsUsageBinder argsUsageBinder = BCELConverter.pluginHelper.createArgsUsageBinder();
-        List<IArgs> args = new ArrayList<IArgs>();
-        IArgs args1 = BCELConverter.pluginHelper.createArgs();
+        List<IArg> args = new ArrayList<IArg>();
+        IArg args1 = BCELConverter.pluginHelper.createArg();
         args1.setName("class_file");
         args1.setDefaultValue("/tmp/Woodpecker.class");
         args1.setDescription("要转换为BCEL的class");
@@ -29,9 +29,9 @@ public class ClassToBCELConverter implements IHelper {
     }
 
     @Override
-    public void doHelp(Map<String, String> customArgs, IResultOutput iResultOutput) {
+    public void doHelp(Map<String, Object> customArgs, IResultOutput iResultOutput) {
         try {
-            String classPath = customArgs.get("class_file");
+            String classPath = (String)customArgs.get("class_file");
             String strEncode = BcelUtil.encode(classPath);
             iResultOutput.rawPrintln("\n");
             iResultOutput.rawPrintln(strEncode);

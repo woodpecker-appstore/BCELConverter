@@ -16,13 +16,13 @@ public class BCELToClassConverter implements IHelper {
     @Override
     public IArgsUsageBinder getHelperCutomArgs() {
         IArgsUsageBinder argsUsageBinder = BCELConverter.pluginHelper.createArgsUsageBinder();
-        List<IArgs> args = new ArrayList<IArgs>();
-        IArgs args1 = BCELConverter.pluginHelper.createArgs();
+        List<IArg> args = new ArrayList<IArg>();
+        IArg args1 = BCELConverter.pluginHelper.createArg();
         args1.setName("bcel_string");
         args1.setDefaultValue("$$BCEL$$...");
         args1.setDescription("要转换的BCEL");
         args1.setRequired(true);
-        IArgs args2 = BCELConverter.pluginHelper.createArgs();
+        IArg args2 = BCELConverter.pluginHelper.createArg();
         args2.setName("save_class_path");
         args2.setDefaultValue("/tmp/Woodpecker.class");
         args2.setDescription("保存的class名");
@@ -34,10 +34,10 @@ public class BCELToClassConverter implements IHelper {
     }
 
     @Override
-    public void doHelp(Map<String, String> customArgs, IResultOutput iResultOutput) {
+    public void doHelp(Map<String, Object> customArgs, IResultOutput iResultOutput) {
         try {
-            String bcelString = customArgs.get("bcel_string");
-            String saveClassPath = customArgs.get("save_class_path");
+            String bcelString = (String)customArgs.get("bcel_string");
+            String saveClassPath = (String)customArgs.get("save_class_path");
             BcelUtil.decode(bcelString,saveClassPath);
             iResultOutput.successPrintln("save file: " + saveClassPath);
         }catch (Throwable t){
