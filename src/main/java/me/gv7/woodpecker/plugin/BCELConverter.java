@@ -17,7 +17,7 @@ public class BCELConverter implements IHelperPlugin {
         this.callbacks = iHelperPluginCallbacks;
         this.pluginHelper = iHelperPluginCallbacks.getPluginHelper();
         callbacks.setHelperPluginName("Class BCEL converter");
-        callbacks.setHelperPluginVersion("0.2.0");
+        callbacks.setHelperPluginVersion("0.3.0");
         callbacks.setHelperPluginAutor("c0ny1");
         List<IHelper> helperList = new ArrayList<IHelper>();
         helperList.add(new ClassToBCELConverter());
